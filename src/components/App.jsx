@@ -35,9 +35,21 @@ export class App extends Component {
     this.setState({ ...this.state, contacts: [...deleteItem] });
   };
 
+  componentDidMount() {
+    const fromLocalUserContacts = JSON.parse(
+      localStorage.getItem('localUserContacts')
+    );
+    if (fromLocalUserContacts) {
+      this.setState({ contacts: fromLocalUserContacts });
+    }
+  }
+
   componentDidUpdate(prevState) {
     if (this.state !== prevState) {
-      localStorage.setItem('settings', JSON.stringify(this.state.contacts));
+      localStorage.setItem(
+        'localUserContacts',
+        JSON.stringify(this.state.contacts)
+      );
     }
     // console.log(this.state);
     // console.log(prevState);
