@@ -38,6 +38,7 @@ export const ContactList = ({ contacts, filter, handleDeleteContact }) => {
       }
     }
   });
+
   return <ul className={style.contactlist}>{newContactList}</ul>;
 };
 

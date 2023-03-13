@@ -35,6 +35,14 @@ export class App extends Component {
     this.setState({ ...this.state, contacts: [...deleteItem] });
   };
 
+  componentDidUpdate(prevState) {
+    if (this.state !== prevState) {
+      localStorage.setItem('settings', JSON.stringify(this.state.contacts));
+    }
+    // console.log(this.state);
+    // console.log(prevState);
+  }
+
   render() {
     return (
       <div
@@ -43,7 +51,6 @@ export class App extends Component {
           width: '400px',
           display: 'flex',
           flexDirection: 'column',
-          // justifyContent: 'center',
           marginLeft: '150px',
           color: '#010101',
         }}
